@@ -1,0 +1,5 @@
+/build/
+/dist/
+/font2img.egg-info/
+.DS_Store
+
