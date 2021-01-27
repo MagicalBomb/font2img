@@ -9,7 +9,7 @@ pip install font2img
 ```Python
 from font2img import ParseTTFFont
 
-p = ParseTTFFont("font_file.woff") # 载入当前目录下的 font_file.woff 字体文件
+p = ParseTTFont("font_file.woff") # 载入当前目录下的 font_file.woff 字体文件
 glyphnames = p.get_glyphnames() # 获取字体文件中所有有效字形的代号
 
 # im 类型为 PIL.Image

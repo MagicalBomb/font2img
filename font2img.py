@@ -28,10 +28,10 @@ WIDTH_PER_LINE = (BASE_BACKGOUND_WIDTH + FONT_WIDTH) // 2
 HEIGHT_PER_LINE = (FONT_HEIGHT + BASE_BACKGOUND_HEIGHT) // 2
 FONT_NUMS_PER_LINE = 14
 
-__all__ = ["ParseTTFFont"]
+__all__ = ["ParseTTFont"]
 
 
-class ParseTTFFont:
+class ParseTTFont:
 
 
     def __init__(self, font, ignore_names=[], overwrite_ignore=False):
@@ -59,7 +59,9 @@ class ParseTTFFont:
         glyph.draw(pen)
         w, h = glyph.width if glyph.width > 1000 else 1000, glyph.width if glyph.width > 1000 else 1000
         d = Drawing(w, h)
-        d.add(pen.path)
+        g = Group(pen.path)
+        g.translate(0, 150)
+        d.add(g)
         im = renderPM.drawToPIL(d, dpi=72).resize((FONT_WIDTH, FONT_HEIGHT))
         return im
 
@@ -83,9 +85,9 @@ class ParseTTFFont:
             pen = ReportLabPen(self.glyphnames, Path(fillColor=colors.black, strokeWidth=1))
             g.draw(pen)
             # w, h = g.width, g.width
-            w, h = g.width if g.width > 1000 else 1000, g.width if g.width > 1000 else 1000
+            w, h = g.width if g.width > 1500 else 1500, g.width if g.width > 1500 else 1500
             g = Group(pen.path)
-            g.translate(0, 200)
+            g.translate(200, 200)
             d = Drawing(w, h)
             d.add(g)
             im = renderPM.drawToPIL(d, dpi=72).resize((FONT_WIDTH, FONT_HEIGHT))
